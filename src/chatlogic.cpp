@@ -31,8 +31,6 @@ ChatLogic::~ChatLogic()
     //// STUDENT CODE
     ////
 
-    std::cout << "ChatLogic Destuctor" << std::endl;
-
     ////
     //// EOF STUDENT CODE
 }
@@ -203,7 +201,9 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
     // add chatbot to graph root node
     _chatBot->SetRootNode(rootNode);
-    rootNode->MoveChatbotHere(_chatBot);
+
+    ChatBot chatBotInstance(std::move(*_chatBot));
+    rootNode->MoveChatbotHere(std::move(chatBotInstance));
     
     ////
     //// EOF STUDENT CODE

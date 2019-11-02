@@ -135,8 +135,6 @@ ChatBot::ChatBot(const ChatBot &source) {
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
-
-    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
 }
 
 ChatBot &ChatBot::operator=(const ChatBot &source) {
@@ -149,8 +147,6 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
-
-    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
 
     return *this;
 }
@@ -171,8 +167,6 @@ ChatBot::ChatBot(ChatBot &&source) {
     source._rootNode = nullptr;
     source._chatLogic = nullptr;
 
-    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
-
 }
 
 ChatBot &ChatBot::operator=(ChatBot &&source) {
@@ -191,9 +185,6 @@ ChatBot &ChatBot::operator=(ChatBot &&source) {
     source._currentNode = nullptr;
     source._rootNode = nullptr;
     source._chatLogic = nullptr;
-
-    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
-
 
     return *this;
 }
