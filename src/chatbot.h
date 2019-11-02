@@ -32,9 +32,10 @@ public:
 
     ChatBot(const ChatBot & source);
     ChatBot &operator=(const ChatBot & source);
-    ChatBot(ChatBot && source) noexcept;
-    ChatBot &operator=(ChatBot && source) noexcept;
+    ChatBot(ChatBot && source);
+    ChatBot &operator=(ChatBot && source);
 
+    ChatLogic * GetChatLogicHandle() {return _chatLogic;}
     ////
     //// EOF STUDENT CODE
 

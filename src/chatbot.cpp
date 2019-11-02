@@ -14,6 +14,7 @@ ChatBot::ChatBot() {
     _image = nullptr;
     _chatLogic = nullptr;
     _rootNode = nullptr;
+    _currentNode = nullptr;
 }
 
 // constructor WITH memory allocation
@@ -23,6 +24,7 @@ ChatBot::ChatBot(std::string filename) {
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
+    _currentNode = nullptr;
 
     // load image into heap memory
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
@@ -30,13 +32,6 @@ ChatBot::ChatBot(std::string filename) {
 
 ChatBot::~ChatBot() {
     std::cout << "ChatBot Destructor" << std::endl;
-
-    // deallocate heap memory
-    if (_image != NULL) // Attention: wxWidgets used NULL and not nullptr
-    {
-        delete _image;
-        _image = NULL;
-    }
 }
 
 //// STUDENT CODE
@@ -133,14 +128,20 @@ int ChatBot::ComputeLevenshteinDistance(std::string s1, std::string s2) {
 }
 
 ChatBot::ChatBot(const ChatBot &source) {
+
+    std::cout << "ChatBot Copy Constructor" << std::endl;
     _image = new wxBitmap(*source._image);
 
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+
+    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
 }
 
 ChatBot &ChatBot::operator=(const ChatBot &source) {
+
+    std::cout << "ChatBot Copy Assign Constructor" << std::endl;
     if (&source == this) { return *this; }
 
     _image = new wxBitmap(*source._image);
@@ -148,11 +149,15 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+
+    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
 
     return *this;
 }
 
-ChatBot::ChatBot(ChatBot &&source) noexcept {
+ChatBot::ChatBot(ChatBot &&source) {
+
+    std::cout << "ChatBot Move Constructor" << std::endl;
 
     _image = source._image;
 
@@ -165,10 +170,14 @@ ChatBot::ChatBot(ChatBot &&source) noexcept {
     source._currentNode = nullptr;
     source._rootNode = nullptr;
     source._chatLogic = nullptr;
+
+    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
+
 }
 
-ChatBot &ChatBot::operator=(ChatBot &&source) noexcept {
+ChatBot &ChatBot::operator=(ChatBot &&source) {
 
+    std::cout << "ChatBot Move Assign Constructor" << std::endl;
     if (&source == this) { return *this; }
 
     _image = source._image;
@@ -182,6 +191,9 @@ ChatBot &ChatBot::operator=(ChatBot &&source) noexcept {
     source._currentNode = nullptr;
     source._rootNode = nullptr;
     source._chatLogic = nullptr;
+
+    std::cout << _image << "\t" << _currentNode << "\t" << _rootNode << "\t" << _chatLogic << std::endl;
+
 
     return *this;
 }

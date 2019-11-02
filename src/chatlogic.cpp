@@ -22,7 +22,6 @@ ChatLogic::ChatLogic()
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
     _chatBot->SetChatLogicHandle(this);
-
     ////
     //// EOF STUDENT CODE
 }
@@ -32,12 +31,7 @@ ChatLogic::~ChatLogic()
     //// STUDENT CODE
     ////
 
-
-    // delete all edges
-    for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
-    {
-        delete *it;
-    }
+    std::cout << "ChatLogic Destuctor" << std::endl;
 
     ////
     //// EOF STUDENT CODE

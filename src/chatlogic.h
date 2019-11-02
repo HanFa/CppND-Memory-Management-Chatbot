@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include "chatbot.h"
 #include "chatgui.h"
 
 // forward declarations
