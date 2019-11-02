@@ -141,7 +141,7 @@ ChatBot::ChatBot(const ChatBot &source) {
 }
 
 ChatBot &ChatBot::operator=(const ChatBot &source) {
-    if (&source == this) { return source; }
+    if (&source == this) { return *this; }
 
     _image = new wxBitmap(*source._image);
 
